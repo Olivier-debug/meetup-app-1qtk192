@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: meetup-app-1qtk19   # 👈 ensure commands run in your Flutter project
 
     steps:
       - name: Checkout repo
@@ -16,7 +19,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.0'   # Match your local Flutter version
+          flutter-version: '3.22.0'
 
       - name: Flutter doctor (debug info)
         run: flutter doctor -v
@@ -34,4 +37,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: meetup-app-1qtk19/build/app/outputs/flutter-apk/app-release.apk
